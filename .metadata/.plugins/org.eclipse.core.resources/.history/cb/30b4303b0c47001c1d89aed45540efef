@@ -1,0 +1,38 @@
+//package com.otpproject.config.service;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.fail;
+//
+//import java.util.Optional;
+//
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//
+//import com.otpproject.config.dao.UserDao;
+//import com.otpproject.config.entity.Users;
+//
+//class OtpServiceImplTest {
+//
+//	private OtpServiceImpl underTest;
+//	private UserDao userDao;
+//	
+//	@BeforeEach
+//	void setUp()
+//	{
+//		underTest= new OtpServiceImpl();
+//	}
+//	
+//	@Test
+//	void testGenerateOTP() {
+//		Optional<Users> user=userDao.findById("priyanshi");
+//		assertEquals("priyanshi.18bit1004@abes.ac.in", user.get().getEmailId());
+//        assertEquals("UP", user.get().getState());
+//        return;
+//	}
+//
+//	@Test
+//	void testValidateOTP() {
+//		fail("Not yet implemented");
+//	}
+//
+//}

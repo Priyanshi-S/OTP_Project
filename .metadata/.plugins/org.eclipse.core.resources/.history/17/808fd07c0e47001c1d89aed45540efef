@@ -1,0 +1,44 @@
+package com.otpproject.config.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.otpproject.config.OtpPojectApplication;
+import com.otpproject.config.dao.UserDao;
+import com.otpproject.config.entity.Users;
+
+@SpringBootTest(classes = OtpPojectApplication.class)
+class OtpServiceImplTest {
+
+	UserDao userDao; 
+	
+	private OtpServiceImpl underTest;
+	
+	
+	@BeforeEach
+	void setUp()
+	{
+		underTest= new OtpServiceImpl();
+	}
+	
+	@Test
+	void testGenerateOTP() {
+		Users user=userDao.findById("priyanshi").get();
+		assertEquals("priyanshi.18bit1004@abes.ac.in", user.getEmailId());
+        assertEquals("UP", user.getState());
+        return;
+	}
+
+	@Test
+	void testValidateOTP() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.otpproject.config.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class EmailServiceImplTest {
+
+	@Test
+	void testSendMail() {
+		EmailServiceImpl mail = new EmailServiceImpl();
+        mail.setFrom("no-reply@memorynotfound.com");
+        mail.setTo("info@memorynotfound.com");
+        mail.setSubject("Spring Mail Integration Testing with JUnit and GreenMail Example");
+        mail.setContent("We show how to write Integration Tests using Spring and GreenMail.");
+
+        emailService.sendSimpleMessage(mail);
+
+        MimeMessage[] receivedMessages = smtpServerRule.getMessages();
+        assertEquals(1, receivedMessages.length);
+
+        MimeMessage current = receivedMessages[0];
+
+        assertEquals(mail.getSubject(), current.getSubject());
+        assertEquals(mail.getTo(), current.getAllRecipients()[0].toString());
+        assertTrue(String.valueOf(current.getContent()).contains(mail.getContent()));
+	}
+
+}

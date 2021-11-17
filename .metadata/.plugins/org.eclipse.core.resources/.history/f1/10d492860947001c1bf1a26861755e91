@@ -1,0 +1,39 @@
+package com.otpproject.config.service;
+
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.otpproject.config.dao.UserDao;
+import com.otpproject.config.entity.Users;
+
+class OtpServiceImplTest {
+
+	private OtpServiceImpl underTest;
+	private UserDao userDao;
+	
+	@BeforeEach
+	void setUp()
+	{
+		underTest= new OtpServiceImpl();
+	}
+	
+	@Test
+	void testGenerateOTP() {
+		boolean res=true;
+		Optional<Users> user=userDao.findById("priyanshi");
+		Assert.assertEquals("Jane Doe", newMember.getName());
+        Assert.assertEquals("jane.doe@mailinator.com", newMember.getEmail());
+        Assert.assertEquals("2125552121", newMember.getPhoneNumber());
+	}
+
+	@Test
+	void testValidateOTP() {
+		fail("Not yet implemented");
+	}
+
+}

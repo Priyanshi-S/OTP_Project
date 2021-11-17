@@ -1,0 +1,10 @@
+package com.otpproject.config.exception;
+
+@ResponseStatus(value=HttpStatus.BAD_REQUEST)
+public class OtpExpiredException {
+	private static final long serialVersionUID = 1L;
+	public OTPExpireException(String errorMessage)
+	{
+		super(errorMessage);
+	}
+}

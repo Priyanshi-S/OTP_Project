@@ -1,0 +1,6 @@
+package com.otpproject.config.exception;
+
+@ResponseStatus(value=HttpStatus.NOT_FOUND)
+public class UsernameNotFoundException {
+
+}

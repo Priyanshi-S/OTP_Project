@@ -1,0 +1,14 @@
+package com.otpproject.config;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@EnableSwagger2
+@SpringBootApplication
+public class OtpPojectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OtpPojectApplication.class, args);
+	}
+
+}

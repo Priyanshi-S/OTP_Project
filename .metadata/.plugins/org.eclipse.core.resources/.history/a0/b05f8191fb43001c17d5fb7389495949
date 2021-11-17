@@ -1,0 +1,30 @@
+package com.otpproject.config.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.otpproject.config.service.OtpService;
+
+@RestController
+@RequestMapping("/api")
+public class HomeController {
+
+	@Autowired
+	OtpService service;
+	
+	@PostMapping("/generateOTP/{userName}")
+	public int generateOTP(@PathVariable String userName) throws UserIDNotFoundException,OrderIDNotFoundException,OTPExpireException
+	{
+		return service.generateOTP(userName);
+	}
+	
+	@GetMapping("/validateOTP/{userId}/{orderId}/{otp}")
+	public String validateOTP(@PathVariable String userId, @PathVariable String orderId, @PathVariable int otp) throws UserIDNotFoundException,OrderIDNotFoundException,InvalidOTPException,OTPExpireException
+	{
+		return service.validateOTP(userId,orderId,otp);
+	}
+}

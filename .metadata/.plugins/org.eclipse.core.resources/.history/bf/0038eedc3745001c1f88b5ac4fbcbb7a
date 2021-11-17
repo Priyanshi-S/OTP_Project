@@ -1,0 +1,76 @@
+package com.otpproject.config.service;
+
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.otpproject.config.dao.UserDao;
+import com.otpproject.config.entity.Users;
+import com.otpproject.config.exception.AttemptsExceededException;
+import com.otpproject.config.exception.OtpExpiredException;
+import com.otpproject.config.exception.OtpInvalidException;
+import com.otpproject.config.exception.UsernameNotFoundException;
+//import com.otpproject.config.service;
+
+@Service
+public class OtpServiceImpl implements OtpService{
+	
+	@Autowired
+	UserDao dao;
+	
+	@Autowired
+	public EmailService emailService;
+	
+	@Override
+	public int generateOTP(String userName)throws UsernameNotFoundException, AttemptsExceededException {
+		// TODO Auto-generated method stub
+		Users userfind= dao.findById(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid UserName : " + userName));
+		if (userfind.getAttempts()>0) {
+			int otp=100000+(new Random().nextInt(900000));
+			userfind.setOtp(otp);
+			System.out.println(userfind.getEmailId());
+			dao.save(userfind);
+			emailService.sendMail(userfind.getEmailId(), "OTP", userfind.getOtp());
+	
+			Timer t = new Timer();  
+			TimerTask tt = new TimerTask()  {  
+			    @Override  
+			    public void run() { 
+			        userfind.setOtp(0);
+			        dao.save(userfind);
+			    };  
+			};  
+			t.schedule(tt, 300000);  
+			return otp;
+		}
+		else {
+			throw new AttemptsExceededException("Attempts To Request For OTP is Exceeded!!");
+		}
+	}
+
+	@Override
+	public String validateOTP(String userName, int otp) throws UsernameNotFoundException,OtpInvalidException,OtpExpiredException{
+		// TODO Auto-generated method stub
+		Users userFind=dao.findById(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid UserId : " + userName));
+		if(userFind.getOtp()==otp)
+		{
+			userFind.setOtp(0);
+			dao.save(userFind);
+		return "OTP Matched";	
+		}
+		else if(userFind.getOtp()==0)
+		{
+	        throw new OtpExpiredException("OTP Expired");
+		}
+		else
+		{
+			userFind.setOtp(0);
+			dao.save(userFind);
+			throw new OtpInvalidException("Invalid OTP");
+		}
+	}
+	
+}

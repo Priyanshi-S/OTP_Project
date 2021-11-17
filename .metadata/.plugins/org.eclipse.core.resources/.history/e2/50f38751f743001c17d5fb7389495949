@@ -1,0 +1,6 @@
+package com.otpproject.config.service;
+
+public interface OtpService {
+	public int generateOTP(String userName);
+	public String validateOTP(String userName,int otp);
+}

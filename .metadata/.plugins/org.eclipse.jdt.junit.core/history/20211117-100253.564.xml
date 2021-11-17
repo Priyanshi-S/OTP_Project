@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OtpProject (1)" project="OtpProject" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.otpproject.config.service.EmailServiceImplTest" time="0.014" displayname="EmailServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.service.EmailServiceImplTest]">
+    <testcase name="testSendMail" classname="com.otpproject.config.service.EmailServiceImplTest" time="0.014" displayname="testSendMail()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.service.EmailServiceImplTest]/[method:testSendMail()]"/>
+  </testsuite>
+  <testsuite name="com.otpproject.config.service.OtpServiceImplTest" time="0.292" displayname="OtpServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.service.OtpServiceImplTest]">
+    <testcase name="testGenerateOTP_userFound" classname="com.otpproject.config.service.OtpServiceImplTest" time="0.292" displayname="testGenerateOTP_userFound()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.service.OtpServiceImplTest]/[method:testGenerateOTP_userFound()]"/>
+  </testsuite>
+  <testsuite name="com.otpproject.test.OtpPojectApplicationTests" time="0.393" displayname="OtpPojectApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.test.OtpPojectApplicationTests]">
+    <testcase name="findById" classname="com.otpproject.test.OtpPojectApplicationTests" time="0.012" displayname="findById()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.test.OtpPojectApplicationTests]/[method:findById()]"/>
+    <testcase name="testReadAll" classname="com.otpproject.test.OtpPojectApplicationTests" time="0.317" displayname="testReadAll()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.test.OtpPojectApplicationTests]/[method:testReadAll()]"/>
+    <testcase name="testCreate" classname="com.otpproject.test.OtpPojectApplicationTests" time="0.061" displayname="testCreate()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.test.OtpPojectApplicationTests]/[method:testCreate()]"/>
+  </testsuite>
+  <testsuite name="com.otpproject.config.controller.HomeControllerTest" time="0.0" displayname="HomeControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.controller.HomeControllerTest]">
+    <testcase name="test" classname="com.otpproject.config.controller.HomeControllerTest" time="0.0" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:com.otpproject.config.controller.HomeControllerTest]/[method:test()]"/>
+  </testsuite>
+</testrun>

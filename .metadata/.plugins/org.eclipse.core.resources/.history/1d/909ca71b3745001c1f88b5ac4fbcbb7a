@@ -1,0 +1,45 @@
+
+#Changing Port
+server.port=8443
+
+# The format used for the keystore. It could be set to JKS in case it is a JKS file
+server.ssl.key-store-type=PKCS12
+# The path to the keystore containing the certificate
+server.ssl.key-store=src/main/resources/local-ssl.p12
+# The password used to generate the certificate
+server.ssl.key-store-password=root2011
+# The alias mapped to the certificate
+server.ssl.key-alias=local_ssl
+server.ssl.enabled=true
+server.ssl.key-password=root2011
+
+#Properties for thymleaf template
+#spring.thymeleaf.cache=false
+#spring.thymeleaf.enabled=true
+#spring.thymeleaf.prefix=classpath:/templates/
+#spring.thymeleaf.suffix=.html
+#spring.application.name=Spring Boot OTP Enabled App
+
+#Properties to connect with Postgres Database
+spring.datasource.url= jdbc:postgresql://localhost:5432/Otp
+spring.datasource.username= postgres
+spring.datasource.password= Root
+spring.datasource.driver-class-name= org.postgresql.Driver
+
+#Disable the Http Authentication 
+#security.user.name=test
+#security.user.password=test
+spring.jpa.hibernate.ddl-auto= update
+spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+#spring.jpa.properties.hibernate.id.new_generator_mappings = false
+#spring.jpa.properties.hibernate.format_sql = true
+
+
+#smtp mail properties
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=reshuj819@gmail.com
+spring.mail.password= riya1414
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true

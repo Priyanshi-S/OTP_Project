@@ -1,0 +1,5 @@
+package com.otpproject.config.entity;
+
+public class User {
+
+}

@@ -1,0 +1,12 @@
+package com.otpproject.config.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.otpproject.config.entity.User;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+@Repository
+public class UserDao implements JpaRepository<User, String>{
+
+}

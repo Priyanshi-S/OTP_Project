@@ -1,0 +1,64 @@
+package com.otpproject.config.service;
+
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.otpproject.config.dao.UserDao;
+import com.otpproject.config.entity.User;
+import com.otpproject.config.exception.UsernameNotFoundException;
+
+@Service
+public class OtpServiceImpl implements OtpService{
+	
+	@Autowired
+	UserDao dao;
+	
+	@Autowired
+	EmailService emailService;
+	
+	@Override
+	public int generateOTP(String userName)throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		User userfind= dao.findById(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid UserName : " + userName));
+		int otp=100000+(new Random().nextInt(900000));
+		userfind.setOtp(otp);
+		dao.save(userfind);
+		emailService.sendMail(userfind.getEmailId(), "OTP", userfind.getOtp());
+
+		Timer t = new Timer();  
+		TimerTask tt = new TimerTask()  {  
+		    @Override  
+		    public void run() { 
+		        userfind.setOtp(0);
+		        dao.save(userfind);
+		    };  
+		};  
+		t.schedule(tt, 60000);  
+		
+		return otp;
+	}
+
+	@Override
+	public String validateOTP(String userName, int otp) {
+		// TODO Auto-generated method stub
+		User userFind=dao.findById(userName).orElseThrow(() -> new UsernameNotFoundException("Invalid UserId : " + userName));
+		if(userFind.getOtp()==otp)
+		{
+		return "OTP Matched";	
+		}
+		else if(otpFind.getOtp()==0)
+		{
+
+	        throw new OTPExpireException("OTP Expired");
+		}
+		else
+		{
+			throw new InvalidOTPException("Invalid OTP");
+		}
+	}
+	
+}

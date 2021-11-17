@@ -1,0 +1,9 @@
+package com.example.DemoApp;
+
+public class TestCodeCover {
+	@Test
+	public void positiveTest() {
+		CompareString obj=new CompareString();
+		obj.containsOrNot("sss");
+	}
+}

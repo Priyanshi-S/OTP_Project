@@ -1,0 +1,5 @@
+package com.otpproject.config.service;
+
+public Interface EmailService {
+
+}
